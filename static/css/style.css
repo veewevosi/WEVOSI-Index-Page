@@ -116,6 +116,25 @@ input {
     color: var(--white);
 }
 
+input[type="file"] {
+    padding: 0.5rem;
+    background-color: transparent;
+    border: 1px dashed var(--white);
+    cursor: pointer;
+}
+
+input[type="file"]:hover {
+    border-color: var(--blue);
+}
+
+.file-hint {
+    display: block;
+    color: var(--white);
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    opacity: 0.8;
+}
+
 input:focus {
     outline: none;
     border-color: var(--blue);
@@ -159,6 +178,61 @@ a:hover {
     align-items: center;
     gap: 2rem;
     margin: 2rem 0;
+}
+
+.ai-voice-connect {
+    background-color: var(--black);
+    padding: 2rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+.voice-uploads {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--gray);
+}
+
+.uploads-list {
+    margin-top: 1rem;
+}
+
+.upload-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--gray);
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+.upload-name {
+    flex: 1;
+}
+
+.upload-date {
+    color: var(--white);
+    opacity: 0.8;
+    margin: 0 1rem;
+}
+
+.upload-status {
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+.upload-status.pending {
+    background-color: var(--orange);
+}
+
+.upload-status.completed {
+    background-color: var(--green);
+}
+
+.upload-status.failed {
+    background-color: var(--purple);
 }
 
 @media (min-width: 768px) {
