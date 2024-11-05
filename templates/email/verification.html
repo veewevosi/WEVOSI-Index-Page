@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verify Your WEVOSI Account</title>
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
+    <div style="background-color: #454545; color: white; padding: 20px; text-align: center; border-radius: 4px;">
+        <h1 style="color: #0166B1;">Welcome to WEVOSI!</h1>
+    </div>
+    <div style="padding: 20px;">
+        <p>Hello {{ username }},</p>
+        <p>Thank you for registering with WEVOSI. Please verify your email address by clicking the button below:</p>
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="{{ verification_url }}" style="background-color: #0166B1; color: white; padding: 12px 24px; text-decoration: none; border-radius: 4px; display: inline-block;">Verify Email Address</a>
+        </div>
+        <p>If the button doesn't work, you can also copy and paste this link into your browser:</p>
+        <p style="word-break: break-all;">{{ verification_url }}</p>
+        <p>This link will expire in 24 hours.</p>
+        <p>Best regards,<br>The WEVOSI Team</p>
+    </div>
+</body>
+</html>
