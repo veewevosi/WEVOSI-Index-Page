@@ -16,8 +16,8 @@
 }
 
 body {
-    background-color: var(--white);
-    color: var(--gray);
+    background-color: var(--gray);
+    color: var(--white);
     line-height: 1.6;
 }
 
@@ -93,15 +93,17 @@ main {
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
-    color: var(--gray);
+    color: var(--white);
 }
 
 input {
     width: 100%;
     padding: 0.75rem;
-    border: 1px solid var(--gray);
+    border: 1px solid var(--white);
     border-radius: 4px;
     font-size: 1rem;
+    background-color: var(--black);
+    color: var(--white);
 }
 
 input:focus {
@@ -125,8 +127,18 @@ ul {
 }
 
 .profile-info {
-    background-color: #f5f5f5;
+    background-color: var(--black);
     padding: 2rem;
     border-radius: 8px;
     margin-top: 1rem;
+    color: var(--white);
+}
+
+a {
+    color: var(--blue);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--purple);
 }
