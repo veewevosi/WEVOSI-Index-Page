@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Profile - WEVOSI{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Welcome, {{ current_user.username }}!</h1>
+    
+    <div class="profile-info">
+        <p><strong>Email:</strong> {{ current_user.email }}</p>
+        <p><strong>Member since:</strong> {{ current_user.created_at.strftime('%B %d, %Y') }}</p>
+    </div>
+</div>
+{% endblock %}
