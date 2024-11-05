@@ -8,15 +8,20 @@
     
     <p>In the competitive world of construction and real estate, your team needs more than just information; it needs a dedicated expert with the knowledge, responsiveness, and professionalism to handle every facet of the industry.</p>
     
-    <h2>Who is Vee Wevosi?</h2>
-    <p>Vee Wevosi is an AI-powered agent engineered specifically for the construction industry. Fluent in both English and Spanish, Vee is a highly versatile professional with the skills and expertise to support your business across a variety of roles:</p>
-    
-    <ul>
-        <li><strong>Executive Assistant:</strong> Streamline your daily operations</li>
-        <li><strong>Product Specialist:</strong> Guide clients through product details</li>
-        <li><strong>Safety Professional:</strong> Ensure compliance and best practices</li>
-        <li><strong>Trainer:</strong> Provide consistent, scalable training</li>
-    </ul>
+    <div class="vee-profile-section">
+        <img src="{{ url_for('static', filename='img/vee-profile.png') }}" alt="Vee Wevosi" class="vee-profile-image">
+        <div class="vee-profile-content">
+            <h2>Who is Vee Wevosi?</h2>
+            <p>Vee Wevosi is an AI-powered agent engineered specifically for the construction industry. Fluent in both English and Spanish, Vee is a highly versatile professional with the skills and expertise to support your business across a variety of roles:</p>
+            
+            <ul>
+                <li><strong>Executive Assistant:</strong> Streamline your daily operations</li>
+                <li><strong>Product Specialist:</strong> Guide clients through product details</li>
+                <li><strong>Safety Professional:</strong> Ensure compliance and best practices</li>
+                <li><strong>Trainer:</strong> Provide consistent, scalable training</li>
+            </ul>
+        </div>
+    </div>
 
     <div class="cta-section">
         {% if not current_user.is_authenticated %}
