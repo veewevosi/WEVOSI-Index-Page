@@ -15,7 +15,7 @@ def login():
         user = User.query.filter_by(email=email).first()
         if user and check_password_hash(user.password_hash, password):
             login_user(user)
-            return redirect(url_for('main.profile'))
+            return redirect(url_for('main.account'))
         flash('Invalid email or password')
     return render_template('login.html')
 
@@ -38,9 +38,9 @@ def register():
         db.session.add(new_user)
         db.session.commit()
         
-        # Log the user in after registration and redirect to profile
+        # Log the user in after registration and redirect to account
         login_user(new_user)
-        return redirect(url_for('main.profile'))
+        return redirect(url_for('main.account'))
     return render_template('register.html')
 
 @auth_bp.route('/logout')

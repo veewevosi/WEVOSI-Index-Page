@@ -17,23 +17,23 @@ def allowed_file(filename):
 def index():
     return render_template('index.html')
 
-@main.route('/profile')
+@main.route('/account')
 @login_required
-def profile():
-    return render_template('profile.html')
+def account():
+    return render_template('account.html')
 
 @main.route('/upload_voice', methods=['POST'])
 @login_required
 def upload_voice():
     if 'csv_file' not in request.files:
         flash('No file selected')
-        return redirect(url_for('main.profile'))
+        return redirect(url_for('main.account'))
     
     file = request.files['csv_file']
     
     if file.filename == '':
         flash('No file selected')
-        return redirect(url_for('main.profile'))
+        return redirect(url_for('main.account'))
     
     if file and allowed_file(file.filename):
         try:
@@ -42,7 +42,7 @@ def upload_voice():
             required_columns = ['timestamp', 'text', 'audio_file']
             if not all(col in df.columns for col in required_columns):
                 flash('Invalid CSV format. Required columns: timestamp, text, audio_file')
-                return redirect(url_for('main.profile'))
+                return redirect(url_for('main.account'))
             
             filename = secure_filename(file.filename)
             
@@ -56,11 +56,11 @@ def upload_voice():
             db.session.commit()
             
             flash('Voice data uploaded successfully')
-            return redirect(url_for('main.profile'))
+            return redirect(url_for('main.account'))
             
         except Exception as e:
             flash('Error processing CSV file')
-            return redirect(url_for('main.profile'))
+            return redirect(url_for('main.account'))
     
     flash('Invalid file type. Please upload a CSV file')
-    return redirect(url_for('main.profile'))
+    return redirect(url_for('main.account'))

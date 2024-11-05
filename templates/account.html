@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Account - WEVOSI{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Welcome, {{ current_user.username }}!</h1>
+    
+    <div class="profile-info">
+        <p><strong>Email:</strong> {{ current_user.email }}</p>
+        <p><strong>Member since:</strong> {{ current_user.created_at.strftime('%B %d, %Y') }}</p>
+    </div>
+
+    <div class="ai-voice-connect">
+        <h2>AI Voice Connect</h2>
+        <p>Upload your CSV files to train Vee with your voice data.</p>
+        
+        <form action="{{ url_for('main.upload_voice') }}" method="POST" enctype="multipart/form-data" class="upload-form">
+            <div class="form-group">
+                <label for="csv_file">Select CSV File</label>
+                <input type="file" id="csv_file" name="csv_file" accept=".csv" required>
+                <small class="file-hint">Only CSV files are supported</small>
+            </div>
+            <button type="submit" class="btn">Upload Voice Data</button>
+        </form>
+
+        {% if current_user.voice_uploads %}
+        <div class="voice-uploads">
+            <h3>Your Voice Uploads</h3>
+            <div class="uploads-list">
+                {% for upload in current_user.voice_uploads %}
+                <div class="upload-item">
+                    <span class="upload-name">{{ upload.filename }}</span>
+                    <span class="upload-date">{{ upload.upload_date.strftime('%Y-%m-%d %H:%M') }}</span>
+                    <span class="upload-status {{ upload.status }}">{{ upload.status }}</span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
