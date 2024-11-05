@@ -40,6 +40,16 @@ header {
     font-weight: bold;
 }
 
+.logo-link {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.logo-link:hover {
+    color: var(--blue);
+}
+
 nav a {
     color: var(--white);
     text-decoration: none;
