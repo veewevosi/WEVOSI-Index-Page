@@ -5,6 +5,7 @@ from werkzeug.utils import secure_filename
 import pandas as pd
 from models import VoiceUpload
 from app import db
+from utils.mail import send_csv_upload_notification
 
 main = Blueprint('main', __name__)
 
@@ -38,7 +39,8 @@ def upload_voice():
     if file and allowed_file(file.filename):
         try:
             # Read CSV file to validate format
-            df = pd.read_csv(file)
+            file_content = file.read()
+            df = pd.read_csv(pd.io.StringIO(file_content.decode('utf-8')))
             required_columns = ['timestamp', 'text', 'audio_file']
             if not all(col in df.columns for col in required_columns):
                 flash('Invalid CSV format. Required columns: timestamp, text, audio_file')
@@ -55,7 +57,12 @@ def upload_voice():
             db.session.add(voice_upload)
             db.session.commit()
             
-            flash('Voice data uploaded successfully')
+            # Send email notification with CSV attachment
+            if send_csv_upload_notification(file_content, filename):
+                flash('Voice data uploaded successfully and notification sent')
+            else:
+                flash('Voice data uploaded but failed to send notification')
+            
             return redirect(url_for('main.account'))
             
         except Exception as e:
