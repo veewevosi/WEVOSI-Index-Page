@@ -6,6 +6,7 @@ import pandas as pd
 from models import VoiceUpload
 from app import db
 from utils.mail import send_csv_upload_notification
+from io import StringIO
 
 main = Blueprint('main', __name__)
 
@@ -44,7 +45,7 @@ def upload_voice():
         # Read and validate CSV file
         file_content = file.read()
         try:
-            df = pd.read_csv(pd.io.StringIO(file_content.decode('utf-8')))
+            df = pd.read_csv(StringIO(file_content.decode('utf-8')))
         except UnicodeDecodeError:
             flash('Error: The CSV file must be encoded in UTF-8 format.')
             return redirect(url_for('main.account'))
