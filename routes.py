@@ -60,11 +60,14 @@ def upload_voice():
         # Trim whitespace from column names
         df.columns = df.columns.str.strip()
         
-        required_columns = ['timestamp', 'text', 'audio_file']
+        required_columns = ['full name', 'phone number', 'email']
+        present_columns = list(df.columns)
         missing_columns = [col for col in required_columns if col not in df.columns]
         
         if missing_columns:
-            flash(f'Missing required columns in CSV: {", ".join(missing_columns)}. Required columns are: timestamp, text, audio_file')
+            flash(f'Invalid CSV format. Missing required columns: {", ".join(missing_columns)}. '
+                  f'Found columns: {", ".join(present_columns)}. '
+                  f'Required columns are: {", ".join(required_columns)}')
             return redirect(url_for('main.account'))
         
         filename = secure_filename(file.filename)
