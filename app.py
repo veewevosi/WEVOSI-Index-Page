@@ -37,4 +37,4 @@ with app.app_context():
     app.register_blueprint(auth_bp)
     
     import models
-    db.create_all()
+    db.create_all()  # Create tables with new schema
